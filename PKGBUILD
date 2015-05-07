@@ -50,8 +50,8 @@ _remove_docs=true
 ########################################
 ########################################
 # set to true if you want to remove the static objects form the libs .
-_remove_static_objects_mkl=true
-_remove_static_objects_ipp=true
+_remove_static_objects_mkl=false
+_remove_static_objects_ipp=false
 ########################################
 
 _year='2015'
