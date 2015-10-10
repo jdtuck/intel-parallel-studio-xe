@@ -8,6 +8,7 @@ else
 fi
 
 . /opt/intel/composerxe/linux/bin/compilervars.sh <arch>
+. /opt/intel/composerxe/linux/mkl/bin/mklvars.sh <arch>
 
 PATH=$PATH:/opt/intel/bin
 export PATH
