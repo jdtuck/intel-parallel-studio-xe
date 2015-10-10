@@ -320,6 +320,28 @@ sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' loopprofileviewer.sh
 chmod a+x loopprofileviewer.sh
 rm loopprofileviewer.csh
 
+cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
+rm debuggervars.csh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' debuggervars.sh
+
+cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/bin
+rm ippvars.csh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ippvars.sh
+
+cd $_i_arch
+rm ippvars_${_i_arch}.csh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ippvars_${_i_arch}.sh
+
+cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/bin
+rm mklvars.csh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' mklvars.sh
+
+rm -rf ./${_not_arch}
+
+cd $_i_arch
+rm mklvars_${_i_arch}.csh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' mklvars_${_i_arch}.sh
+
 echo -e " # Coping man pages"
 mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
 
