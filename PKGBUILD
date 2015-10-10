@@ -88,7 +88,7 @@ source=(
 
 sha256sums=(
 'f254818ea92b7c2066d8efb6539c376489b7ed121539a4f2732972b6c928f803'  # parallel_studio_xe_2016_composer_edition.tgz
-'338041f924d8f3ac31d349bca57f8ab66f094a5bb53d4f821f48fa710a112111'  # intel_compilers.sh
+'ab087b1d4e0ccb45ea695cd61a7e8b2817e4d579053c3bfd78658625d65f8ed3'  # intel_compilers.sh
 '51f9d94d66aab79129fc51794e32cd5e2abdfd85cd87e70b7a102d746b850257'  # intel-composer.install
 '31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884'  # intel-compiler-base.conf
 'c165386ba33b25453d4f5486b7fefcdba7d31e156ad280cbdfa13ed924b01bef'  # intel-fortran.conf
