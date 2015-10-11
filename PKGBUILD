@@ -1,21 +1,12 @@
-# Maintainer: Mark Wells: mwellsa -at- gmail com
+# Maintainer: J. Derek Tucker: derek at tetonedge net
 # Contributor: simone riva: siomone.rva -a- gmail com
-# Intel Parallel Studio XE 2015 for Linux - ( Intel compiler icc suite )
+# Intel Parallel Studio XE 2016 for Linux - ( Intel compiler icc suite )
 ##########################################################################
-# this PKGBUILD splits the main Parallel Studio XE packege in 8 sub-packages:
-#
-# intel-compiler-base:          Intel C/C++ compiler and base libs
-# intel-fortran-compiler:       Intel fortran compiler and base libs"
-# intel-openmp:                 Intel OpenMP Library
-# intel-idb:                    Intel C/C++ debugger
-# intel-ipp:                    Intel Integrated Performance Primitives
-# intel-mkl:                    Intel Math Kernel Library (Intel® MKL)
-# intel-sourcechecker:          Intel Source Checker
-# intel-tbb:                    Intel Threading Building Blocks (TBB)
+# intel-compiler:          Intel C/C++ compiler and base libs
 ###########################################################################
 
 # Parallel Studio XE
-#     Copyright (C) 2015    Mark Wells
+#     Copyright (C) 2015  J. Derek Tucker
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -31,7 +22,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=( 'intel-compiler')
+pkgname=('intel-compiler')
 
 PKGEXT='.pkg.tar.gz'
 
@@ -340,7 +331,7 @@ rm -rf ./${_not_arch}
 
 cd $_i_arch
 rm mklvars_${_i_arch}.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' mklvars_${_i_arch}.sh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' mklvars_${_i_arch}.sh
 
 echo -e " # Coping man pages"
 mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
@@ -370,10 +361,10 @@ fi
 
 if [ "$CARCH" = "i686" ]; then
     sed 's/<arch>/ia32/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
 else
     sed 's/<arch>/intel64/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
 fi
 
 cp ${srcdir}/intel-mkl.sh ${xe_build_dir}/etc/profile.d
