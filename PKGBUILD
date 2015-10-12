@@ -303,35 +303,27 @@ rm *.csh
 
 for f in *.sh ; do
     sed -i 's/<PRODDIR>/\/opt\/intel/g' $f
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' $f
+    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' $f
 done
 
 cd $_i_arch
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' loopprofileviewer.sh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' loopprofileviewer.sh
 chmod a+x loopprofileviewer.sh
 rm loopprofileviewer.csh
 
-cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/bin
-rm debuggervars.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' debuggervars.sh
-
 cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/ipp/bin
 rm ippvars.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' ippvars.sh
-
-cd $_i_arch
-rm ippvars_${_i_arch}.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' ippvars_${_i_arch}.sh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' ippvars.sh
 
 cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/linux/mkl/bin
 rm mklvars.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' mklvars.sh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars.sh
 
 rm -rf ./${_not_arch}
 
 cd $_i_arch
 rm mklvars_${_i_arch}.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' mklvars_${_i_arch}.sh
+sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars_${_i_arch}.sh
 
 echo -e " # Coping man pages"
 mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
@@ -361,10 +353,10 @@ fi
 
 if [ "$CARCH" = "i686" ]; then
     sed 's/<arch>/ia32/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
 else
     sed 's/<arch>/intel64/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/linux/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+    sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
 fi
 
 cp ${srcdir}/intel-mkl.sh ${xe_build_dir}/etc/profile.d
