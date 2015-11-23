@@ -37,20 +37,20 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2016'
-_v_a='0'
-_v_b='109'
+_v_a='1'
+_v_b='150'
 
-_update=''
+_update='update1'
 
 pkgrel=1
 
 _sp=''
 
-_studio_ver='16.0.0'
+_studio_ver='16.0.1'
 
-pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
+pkgver=${_year}.${_studio_ver}.${_v_a}.${_v_b}
 
-_dir_nr='8001'
+_dir_nr='8369'
 
 options=(strip libtool staticlibs)
 
@@ -59,7 +59,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('libarchive' 'sed' 'gzip')
 
-_parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_${_update}}_composer_edition"
+_parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}_composer_edition${_update:+_${_update}}"
 
 source=(
 "http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
@@ -78,7 +78,7 @@ source=(
 
 
 sha256sums=(
-'f254818ea92b7c2066d8efb6539c376489b7ed121539a4f2732972b6c928f803'  # parallel_studio_xe_2016_composer_edition.tgz
+'bd7e56b257a1f3047c1b94b83900b0a218ec886f103bbbb1741d8416c091fb73'  # parallel_studio_xe_2016_composer_edition_update1.tgz
 'ab087b1d4e0ccb45ea695cd61a7e8b2817e4d579053c3bfd78658625d65f8ed3'  # intel_compilers.sh
 '51f9d94d66aab79129fc51794e32cd5e2abdfd85cd87e70b7a102d746b850257'  # intel-composer.install
 '31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884'  # intel-compiler-base.conf
@@ -117,7 +117,7 @@ extract_rpms() {
 }
 
 set_build_vars() {
-    _pkg_ver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
+    _pkg_ver=${_year}.${_studio_ver}.${_v_a}.${_v_b}
     _composer_xe_dir="compilers_and_libraries_${_year}.${_v_a}.${_v_b}"
     rpm_dir=${srcdir}/${_parallel_studio_xe_dir}/rpm
     xe_build_dir=${srcdir}/cxe_build
@@ -321,9 +321,9 @@ sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars.sh
 
 rm -rf ./${_not_arch}
 
-cd $_i_arch
-rm mklvars_${_i_arch}.csh
-sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars_${_i_arch}.sh
+#cd $_i_arch
+#rm mklvars_${_i_arch}.csh
+#sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/linux/g' mklvars_${_i_arch}.sh
 
 echo -e " # Coping man pages"
 mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}
